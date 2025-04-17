@@ -4,11 +4,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <title>欢迎你</title>
+    <style>
+        /* 过渡动画 */
+       .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* 动画效果 */
+       .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* 选中语言按钮加粗 */
+       .selected-lang {
+            font-weight: bold;
+        }
+
+        /* App icon 方形圆角 */
+       .app-icon {
+            border-radius: 18%;
+        }
+
+        /* App 名称居中 */
+       .app-name {
+            text-align: center;
+        }
+
+        /* App 简介固定两行高度，超过显示省略号 */
+        .app-description {
+            text-align: center;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 2.4em; /* 假设一行文字高度为 1.2em，两行就是 2.4em */
+            line-height: 1.2em; /* 行高设置为 1.2em */
+        }
+        
+
+        /* App 下载按钮固定与下方的距离 */
+       .app-download {
+            margin-top: 1.5rem;
+        }
+    </style>
 </head>
 
-<body>
-    <h1>111</h1>
+<body class="bg-gray-100 font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 id="siteName" class="text-2xl font-bold text-gray-800">欢迎你👏🏻</h1>
+            <div class="flex space-x-2">
+                <button id="chineseBtn" class="text-gray-600 hover:text-gray-800 transition-all selected-lang"
+                    onclick="switchLanguage('zh')">简体中文</button>
+                <button id="englishBtn" class="text-gray-600 hover:text-gray-800 transition-all"
+                    onclick="switchLanguage('en')">English</button>
+            </div>
+        </div>
+    </nav>
+    <!-- 科技感大图 -->
+    <section class="bg-cover bg-center h-96" style="background-image: url('https://picsum.photos/1920/1080?random=1');">
+        <div class="container mx-auto h-full flex items-center justify-center">
+            <div class="text-white text-center">
+                <h2 id="heroTitle" class="text-4xl font-bold mb-4">探索科技未来</h2>
+                <p id="heroSubtitle" class="text-lg">开启创新之旅</p>
+            </div>
+        </div>
+    </section>
+    <!-- App展示 -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- 小决定 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_wheel.png" alt="小决定 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app1Name" class="text-xl font-bold text-gray-800 mb-2 app-name">小决定</h3>
+                <p id="app1Desc" class="text-gray-600 app-description">从此告别选择困难症，随机数选择聚会派对大转盘游戏助手神器</p>
+                <a id="app1Download" href="https://apps.apple.com/cn/app/id1643724562" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 翻译 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_translate.png" alt="翻译 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app2Name" class="text-xl font-bold text-gray-800 mb-2 app-name">翻译</h3>
+                <p id="app2Desc" class="text-gray-600 app-description">超好用的翻译软件，支持27种语言互译</p>
+                <a id="app2Download" href="https://apps.apple.com/cn/app/id6444388954" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 时光相机 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_cam.png" alt="时光相机 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app3Name" class="text-xl font-bold text-gray-800 mb-2 app-name">时光相机</h3>
+                <p id="app3Desc" class="text-gray-600 app-description">看看你变老后的样子,一键变老变年轻动漫化</p>
+                <a id="app3Download" href="https://apps.apple.com/cn/app/id6447122554" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 猫狗翻译器 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_dog.png" alt="猫狗翻译器 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app4Name" class="text-xl font-bold text-gray-800 mb-2 app-name">猫狗翻译器</h3>
+                <p id="app4Desc" class="text-gray-600 app-description">人与猫狗无障碍交流沟通，AI分析海量猫狗叫声大数据模型，翻译更准确</p>
+                <a id="app4Download" href="https://apps.apple.com/cn/app/id123" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 熊猫记账 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_panda.png" alt="熊猫记账 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app5Name" class="text-xl font-bold text-gray-800 mb-2 app-name">熊猫记账</h3>
+                <p id="app5Desc" class="text-gray-600 app-description">随手记账存钱管家工具软件，超好用的日常记账本</p>
+                <a id="app5Download" href="https://apps.apple.com/cn/app/id1530952802" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 西江月 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_moon.png" alt="西江月 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app6Name" class="text-xl font-bold text-gray-800 mb-2 app-name">西江月</h3>
+                <p id="app6Desc" class="text-gray-600 app-description">领略中华传统诗词之美</p>
+                <a id="app6Download" href="https://apps.apple.com/cn/app/id6447604636" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 电子木鱼 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_muyu.png" alt="电子木鱼 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app7Name" class="text-xl font-bold text-gray-800 mb-2 app-name">电子木鱼</h3>
+                <p id="app7Desc" class="text-gray-600 app-description">平心静气佛系念经助手，冥想放松减少焦虑，功德+1</p>
+                <a id="app7Download" href="https://apps.apple.com/cn/app/id6443528834" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+            <!-- 倒数纪念日 -->
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all hover-scale flex flex-col">
+                <img src="./images/icon_days.png" alt="倒数纪念日 Icon"
+                    class="w-20 h-20 mx-auto mb-4 app-icon">
+                <h3 id="app8Name" class="text-xl font-bold text-gray-800 mb-2 app-name">倒数纪念日</h3>
+                <p id="app8Desc" class="text-gray-600 app-description">倒计时日期提醒软件，恋爱生日重要日子记录时间规划管理</p>
+                <a id="app8Download" href="https://apps.apple.com/cn/app/id1659178143" target="_blank"
+                    class="block text-center bg-black text-white py-2 px-4 rounded-md app-download hover:bg-gray-800 transition-all"> 下载</a>
+            </div>
+        </div>
+    </section>
+    <!-- 底部信息 -->
+    <footer class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <p id="copyright" class="text-gray-600">XiaoWen Liu All Rights Reserved</p>
+            <div class="flex space-x-4">
+                <a id="userAgreement" href="https://hoox27.github.io/url/UserAgreement_hans.html" target="_blank" class="text-gray-600 hover:text-gray-800 transition-all">用户协议</a>
+                <a id="privacyPolicy" href="https://hoox27.github.io/url/PrivacyPolicy_hans.html" target="_blank" class="text-gray-600 hover:text-gray-800 transition-all">隐私政策</a>
+                <a id="contactUs" class="text-gray-600 hover:text-gray-800 transition-all">联系我们:chenhoox@qq.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                siteName: "欢迎你👏🏻",
+                heroTitle: "探索科技未来",
+                heroSubtitle: "开启创新之旅",
+                app1Name: "小决定",
+                app1Desc: "从此告别选择困难症，随机数选择聚会派对大转盘游戏助手神器",
+                app1Download: " 下载",
+                app2Name: "翻译",
+                app2Desc: "超好用的翻译软件，支持27种语言互译",
+                app2Download: " 下载",
+                app3Name: "时光相机",
+                app3Desc: "看看你变老后的样子,一键变老变年轻动漫化",
+                app3Download: " 下载",
+                app4Name: "猫狗翻译器",
+                app4Desc: "人与猫狗无障碍交流沟通，AI分析海量猫狗叫声大数据模型，翻译更准确",
+                app4Download: " 下载",
+                app5Name: "熊猫记账",
+                app5Desc: "随手记账存钱管家工具软件，超好用的日常记账本",
+                app5Download: " 下载",
+                app6Name: "西江月",
+                app6Desc: "领略中华传统诗词之美",
+                app6Download: " 下载",
+                app7Name: "电子木鱼",
+                app7Desc: "平心静气佛系念经助手，冥想放松减少焦虑，功德+1",
+                app7Download: " 下载",
+                app8Name: "倒数纪念日",
+                app8Desc: "倒计时日期提醒软件，恋爱生日重要日子记录时间规划管理",
+                app8Download: " 下载",
+                copyright: "XiaoWen Liu All Rights Reserved",
+                userAgreement: {
+                    text: "用户协议",
+                    url: "https://hoox27.github.io/url/UserAgreement_hans.html"
+                },
+                privacyPolicy: {
+                    text: "隐私政策",
+                    url: "https://hoox27.github.io/url/PrivacyPolicy_hans.html"
+                },
+                contactUs: "联系我们:chenhoox@qq.com"
+            },
+            en: {
+                siteName: "Welcome👏🏻",
+                heroTitle: "Explore the Future of Technology",
+                heroSubtitle: "Start Your Innovative Journey",
+                app1Name: "Spin The Wheel",
+                app1Desc: "Custom Wheels Random Choice",
+                app1Download: " Download",
+                app2Name: "ATranslate",
+                app2Desc: "Translation between 27 languages",
+                app2Download: " Download",
+                app3Name: "Time Camera",
+                app3Desc: "Aging & Younger,Face Editor,Gender Swap",
+                app3Download: " Download",
+                app4Name: "Dog & Cat Translator",
+                app4Desc: "Pet Training Talking Simulator",
+                app4Download: " Download",
+                app5Name: "Panda Bookkeeping",
+                app5Desc: "Revenue & Expenditure Records",
+                app5Download: " Download",
+                app6Name: "Xijiang Moon",
+                app6Desc: "Appreciating the Beauty of Traditional Chinese Poetry",
+                app6Download: " Download",
+                app7Name: "Electronic wooden fish",
+                app7Desc: "Meditation to Relax and Reduce Anxiety",
+                app7Download: " Download",
+                app8Name: "Countdown",
+                app8Desc: "Important Day Reminder",
+                app8Download: " Download",
+                copyright: "XiaoWen Liu All Rights Reserved",
+                userAgreement: {
+                    text: "User Agreement",
+                    url: "https://hoox27.github.io/url/UserAgreement_en.html"
+                },
+                privacyPolicy: {
+                    text: "Privacy Policy",
+                    url: "https://hoox27.github.io/url/PrivacyPolicy_en.html"
+                },
+                contactUs: "E-mail:chenhoox@qq.com"
+            }
+        };
+
+        function switchLanguage(lang) {
+            const langData = translations[lang];
+            document.getElementById('siteName').textContent = langData.siteName;
+            document.getElementById('heroTitle').textContent = langData.heroTitle;
+            document.getElementById('heroSubtitle').textContent = langData.heroSubtitle;
+            document.getElementById('app1Name').textContent = langData.app1Name;
+            document.getElementById('app1Desc').textContent = langData.app1Desc;
+            document.getElementById('app1Download').textContent = langData.app1Download;
+            document.getElementById('app2Name').textContent = langData.app2Name;
+            document.getElementById('app2Desc').textContent = langData.app2Desc;
+            document.getElementById('app2Download').textContent = langData.app2Download;
+            document.getElementById('app3Name').textContent = langData.app3Name;
+            document.getElementById('app3Desc').textContent = langData.app3Desc;
+            document.getElementById('app3Download').textContent = langData.app3Download;
+            document.getElementById('app4Name').textContent = langData.app4Name;
+            document.getElementById('app4Desc').textContent = langData.app4Desc;
+            document.getElementById('app4Download').textContent = langData.app4Download;
+            document.getElementById('app5Name').textContent = langData.app5Name;
+            document.getElementById('app5Desc').textContent = langData.app5Desc;
+            document.getElementById('app5Download').textContent = langData.app1Download;
+            document.getElementById('app6Name').textContent = langData.app6Name;
+            document.getElementById('app6Desc').textContent = langData.app6Desc;
+            document.getElementById('app6Download').textContent = langData.app2Download;
+            document.getElementById('app7Name').textContent = langData.app7Name;
+            document.getElementById('app7Desc').textContent = langData.app7Desc;
+            document.getElementById('app7Download').textContent = langData.app3Download;
+            document.getElementById('app8Name').textContent = langData.app8Name;
+            document.getElementById('app8Desc').textContent = langData.app8Desc;
+            document.getElementById('app8Download').textContent = langData.app4Download;
+            document.getElementById('copyright').textContent = langData.copyright;
+
+            const userAgreement = document.getElementById('userAgreement');
+            userAgreement.textContent = langData.userAgreement.text;
+            userAgreement.href = langData.userAgreement.url;
+
+            const privacyPolicy = document.getElementById('privacyPolicy');
+            privacyPolicy.textContent = langData.privacyPolicy.text;
+            privacyPolicy.href = langData.privacyPolicy.url;
+
+            document.getElementById('contactUs').textContent = langData.contactUs;
+
+            const chineseBtn = document.getElementById('chineseBtn');
+            const englishBtn = document.getElementById('englishBtn');
+            if (lang === 'zh') {
+                chineseBtn.classList.add('selected-lang');
+                englishBtn.classList.remove('selected-lang');
+            } else {
+                englishBtn.classList.add('selected-lang');
+                chineseBtn.classList.remove('selected-lang');
+            }
+        }
+    </script>
 </body>
 
-</html
+</html>
+    
